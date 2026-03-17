@@ -1,0 +1,27 @@
+name: WestShore Daily Report Check
+
+on:
+  schedule:
+    # 9:00 AM US Eastern (14:00 UTC; 13:00 UTC during EDT)
+    - cron: "0 13 * * *"
+  workflow_dispatch: # allow manual trigger from GitHub UI
+
+jobs:
+  check-reports:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run report checker
+        env:
+          GMAIL_CREDENTIALS: ${{ secrets.GMAIL_CREDENTIALS }}
+          GMAIL_TOKEN: ${{ secrets.GMAIL_TOKEN }}
+        run: python ws_report_checker.py --days 3 --notify

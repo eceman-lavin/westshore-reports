@@ -1,0 +1,4 @@
+creds/
+__pycache__/
+*.pyc
+.env
