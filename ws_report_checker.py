@@ -461,13 +461,13 @@ def _print_diff(baseline: list, actual: list, indent: str = "  ", label: str = "
         return
 
     if missing_cols:
-        print(f"{indent}  Removed ({len(missing_cols)}):")
+        print(f"{indent}  Added since ({len(missing_cols)}):")
         for c in missing_cols:
-            print(f"{indent}    − \"{c}\"")
-    if added_cols:
-        print(f"{indent}  Added ({len(added_cols)}):")
-        for c in added_cols:
             print(f"{indent}    + \"{c}\"")
+    if added_cols:
+        print(f"{indent}  Missing from current ({len(added_cols)}):")
+        for c in added_cols:
+            print(f"{indent}    − \"{c}\"")
     if reordered:
         print(f"{indent}  Same columns, ORDER changed:")
         for i, (e, a) in enumerate(zip(baseline, actual)):
