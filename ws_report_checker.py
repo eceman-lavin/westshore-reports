@@ -50,10 +50,10 @@ REPORTS = {
     "CPL Sets":      {"subject": "Lavin CPL- Sets (Report Out)"},  # no space before "Sets" — intentional
     "CPL Issued":    {"subject": "Lavin CPL - Issued (Report Out)"},
     "FHF Issued":    {"subject": "Lavin FHF - Issued (Report Out)"},
-    # schedule={MWF} → only Mon/Wed/Fri expected
-    "WIT Issued":    {"subject": "Lavin (WIT)-Issued",    "schedule": MWF},
-    "WIT Sets":      {"subject": "Lavin (WIT)-Sets",      "schedule": MWF},
-    "WIT Inquiries": {"subject": "Lavin (WIT)-Inquiries", "schedule": MWF},
+    # schedule omitted → daily (every calendar day expected)
+    "WIT Issued":    {"subject": "Lavin (WIT)-Issued"},
+    "WIT Sets":      {"subject": "Lavin (WIT)-Sets"},
+    "WIT Inquiries": {"subject": "Lavin (WIT)-Inquiries"},
 }
 
 # ── Active-start detection config ─────────────────────────────────────────────
