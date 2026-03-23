@@ -24,4 +24,4 @@ jobs:
         env:
           GMAIL_CREDENTIALS: ${{ secrets.GMAIL_CREDENTIALS }}
           GMAIL_TOKEN: ${{ secrets.GMAIL_TOKEN }}
-        run: python ws_report_checker.py --days 3 --notify
+        run: python ws_report_checker.py --days 15 --notify
