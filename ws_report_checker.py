@@ -318,7 +318,7 @@ def analyze_report(
         print()
 
     if not records:
-        print("  No usable emails found in the lookback window.")
+        print("  ✗ No emails found in the lookback window — report may have stopped.")
         return
 
     print(f"  Oldest email : {records[0][0]}")
@@ -572,13 +572,16 @@ def main():
     print(output)   # always show in terminal too
 
     has_issues = "✗" in output
-    if has_issues:
-        subject = f"⚠ WestShore Report Issues — {today}"
-        try:
-            _send_email(service, subject, output)
-            print(f"  Notification sent → {NOTIFY_TO}")
-        except Exception as exc:
-            print(f"  Failed to send notification email: {exc}")
+    subject = (
+        f"⚠ WestShore Report Issues — {today}"
+        if has_issues
+        else f"✓ WestShore Reports OK — {today}"
+    )
+    try:
+        _send_email(service, subject, output)
+        print(f"  Notification sent → {NOTIFY_TO}")
+    except Exception as exc:
+        print(f"  Failed to send notification email: {exc}")
 
 
 if __name__ == "__main__":
